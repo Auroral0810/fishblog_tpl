@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "serve": "SASS_LOGGER_LEVEL=error vue-cli-service serve",
+    "serve1": "SASS_LOGGER_LEVEL=error vue-cli-service serve",
+    "serve": "vue-cli-service serve --skip-plugin=eslint",
     "build": "SASS_LOGGER_LEVEL=error vue-cli-service build --drop-console",
     "lint": "vue-cli-service lint"
   },

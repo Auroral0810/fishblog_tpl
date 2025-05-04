@@ -30,9 +30,9 @@ CREATE TABLE `tb_article` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL COMMENT '作者',
   `category_id` int DEFAULT NULL COMMENT '文章分类',
-  `article_cover` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '文章缩略图',
-  `article_title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '标题',
-  `article_content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '内容',
+  `article_cover` varchar(1024) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '文章缩略图',
+  `article_title` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '标题',
+  `article_content` longtext CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '内容',
   `create_time` datetime DEFAULT NULL COMMENT '发表时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `is_top` tinyint(1) DEFAULT NULL COMMENT '是否置顶 0否 1是',
@@ -43,7 +43,7 @@ CREATE TABLE `tb_article` (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `idx_permalink` (`permalink`),
   KEY `category_id` (`category_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `tb_article_tag` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `fk_article_tag_1` (`article_id`) USING BTREE,
   KEY `fk_article_tag_2` (`tag_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=384 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=384 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,10 +92,10 @@ DROP TABLE IF EXISTS `tb_category`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_category` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '分类名',
+  `category_name` varchar(20) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '分类名',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,15 +118,15 @@ DROP TABLE IF EXISTS `tb_chat_record`;
 CREATE TABLE `tb_chat_record` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
   `user_id` int DEFAULT NULL COMMENT '用户id',
-  `nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '昵称',
-  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '头像',
-  `content` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '聊天内容',
-  `ip_addr` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'ip地址',
-  `ip_source` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'ip来源',
+  `nickname` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '昵称',
+  `avatar` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '头像',
+  `content` varchar(5000) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '聊天内容',
+  `ip_addr` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT 'ip地址',
+  `ip_source` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT 'ip来源',
   `type` tinyint DEFAULT NULL COMMENT '类型',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1293 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=1293 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +149,7 @@ CREATE TABLE `tb_comment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL COMMENT '评论用户Id',
   `article_id` int DEFAULT NULL COMMENT '评论文章id',
-  `comment_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '评论内容',
+  `comment_content` text CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '评论内容',
   `create_time` datetime NOT NULL COMMENT '评论时间',
   `reply_id` int DEFAULT NULL COMMENT '回复用户id',
   `parent_id` int DEFAULT NULL COMMENT '父评论id',
@@ -158,7 +158,7 @@ CREATE TABLE `tb_comment` (
   KEY `fk_comment_user` (`user_id`) USING BTREE,
   KEY `fk_comment_article` (`article_id`) USING BTREE,
   KEY `fk_comment_parent` (`parent_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=290 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=290 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +190,7 @@ CREATE TABLE `tb_favorite` (
   `sort` int DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`),
   KEY `idx_category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='收藏网站表';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci COMMENT='收藏网站表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +218,7 @@ CREATE TABLE `tb_favorite_category` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `sort` int DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='收藏网站分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci COMMENT='收藏网站分类表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +245,7 @@ CREATE TABLE `tb_favorite_tag` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`),
   KEY `idx_favorite_id` (`favorite_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='收藏网站标签表';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci COMMENT='收藏网站标签表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,14 +267,14 @@ DROP TABLE IF EXISTS `tb_friend_link`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_friend_link` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `link_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '链接名',
-  `link_avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '链接头像',
-  `link_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '链接地址',
-  `link_intro` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '链接介绍',
+  `link_name` varchar(20) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '链接名',
+  `link_avatar` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '链接头像',
+  `link_address` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '链接地址',
+  `link_intro` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '链接介绍',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `fk_friend_link_user` (`link_name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,10 +296,10 @@ DROP TABLE IF EXISTS `tb_menu`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_menu` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '菜单名',
-  `path` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '菜单路径',
-  `component` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '组件',
-  `icon` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '菜单icon',
+  `name` varchar(20) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '菜单名',
+  `path` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '菜单路径',
+  `component` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '组件',
+  `icon` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '菜单icon',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `order_num` tinyint DEFAULT NULL COMMENT '排序',
@@ -307,7 +307,7 @@ CREATE TABLE `tb_menu` (
   `is_disable` tinyint(1) DEFAULT NULL COMMENT '是否禁用 0否1是',
   `is_hidden` tinyint(1) DEFAULT NULL COMMENT '是否隐藏  0否1是',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -329,15 +329,15 @@ DROP TABLE IF EXISTS `tb_message`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_message` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '主键id',
-  `ip_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户ip',
-  `ip_source` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户地址',
-  `nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '昵称',
-  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '头像',
-  `message_content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '留言内容',
+  `ip_address` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '用户ip',
+  `ip_source` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '用户地址',
+  `nickname` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '昵称',
+  `avatar` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '头像',
+  `message_content` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '留言内容',
   `time` tinyint(1) DEFAULT NULL COMMENT '弹幕速度',
   `create_time` datetime NOT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3464 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3464 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,11 +359,11 @@ DROP TABLE IF EXISTS `tb_notice`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_notice` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '公告ID',
-  `content` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '公告内容',
+  `content` varchar(1000) COLLATE utf8_unicode_ci NOT NULL COMMENT '公告内容',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='公告表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='公告表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,21 +385,21 @@ DROP TABLE IF EXISTS `tb_operation_log`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_operation_log` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '主键id',
-  `opt_module` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作模块',
-  `opt_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作类型',
-  `opt_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作url',
-  `opt_method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作方法',
-  `opt_desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作描述',
-  `request_param` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '请求参数',
-  `request_method` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '请求方式',
-  `response_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '返回数据',
+  `opt_module` varchar(20) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '操作模块',
+  `opt_type` varchar(20) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '操作类型',
+  `opt_url` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '操作url',
+  `opt_method` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '操作方法',
+  `opt_desc` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '操作描述',
+  `request_param` longtext CHARACTER SET utf8 COLLATE  utf8_general_ci COMMENT '请求参数',
+  `request_method` varchar(20) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '请求方式',
+  `response_data` longtext CHARACTER SET utf8 COLLATE  utf8_general_ci COMMENT '返回数据',
   `user_id` int DEFAULT NULL COMMENT '用户id',
-  `nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户昵称',
-  `ip_addr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作ip',
-  `ip_source` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '操作地址',
+  `nickname` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '用户昵称',
+  `ip_addr` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '操作ip',
+  `ip_source` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '操作地址',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -420,16 +420,16 @@ DROP TABLE IF EXISTS `tb_resource`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_resource` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `resource_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '资源名',
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '权限路径',
-  `request_method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '请求方式',
+  `resource_name` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '资源名',
+  `url` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '权限路径',
+  `request_method` varchar(10) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '请求方式',
   `parent_id` int DEFAULT NULL COMMENT '父权限id',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `is_disable` tinyint(1) DEFAULT NULL COMMENT '是否禁用 0否 1是',
   `is_anonymous` tinyint DEFAULT NULL COMMENT '是否匿名访问 0否 1是',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -451,13 +451,13 @@ DROP TABLE IF EXISTS `tb_role`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_role` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '主键id',
-  `role_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '角色名',
-  `role_label` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '角色描述',
+  `role_name` varchar(20) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '角色名',
+  `role_label` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '角色描述',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `is_disable` tinyint(1) DEFAULT NULL COMMENT '是否禁用  0否 1是',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -482,7 +482,7 @@ CREATE TABLE `tb_role_menu` (
   `role_id` int DEFAULT NULL COMMENT '角色id',
   `menu_id` int DEFAULT NULL COMMENT '菜单id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1293 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=1293 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -507,7 +507,7 @@ CREATE TABLE `tb_role_resource` (
   `role_id` int DEFAULT NULL COMMENT '角色id',
   `resource_id` int DEFAULT NULL COMMENT '权限id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4273 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4273 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -529,10 +529,10 @@ DROP TABLE IF EXISTS `tb_tag`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_tag` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tag_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '标签名',
+  `tag_name` varchar(20) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '标签名',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -557,7 +557,7 @@ CREATE TABLE `tb_unique_view` (
   `create_time` datetime NOT NULL COMMENT '时间',
   `views_count` int NOT NULL COMMENT '访问量',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -580,16 +580,16 @@ DROP TABLE IF EXISTS `tb_user_auth`;
 CREATE TABLE `tb_user_auth` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_info_id` int NOT NULL COMMENT '用户信息id',
-  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户名',
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
+  `username` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '用户名',
+  `password` varchar(100) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '密码',
   `login_type` tinyint(1) NOT NULL COMMENT '登录类型',
-  `ip_addr` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户登录ip',
-  `ip_source` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'ip来源',
+  `ip_addr` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '用户登录ip',
+  `ip_source` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT 'ip来源',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `last_login_time` datetime DEFAULT NULL COMMENT '上次登录时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=205 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=205 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -611,19 +611,19 @@ DROP TABLE IF EXISTS `tb_user_info`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_user_info` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '邮箱号',
+  `email` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '邮箱号',
   `phone` varchar(20) DEFAULT NULL COMMENT '手机号码',
-  `nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户昵称',
-  `avatar` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '用户头像',
-  `intro` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户简介',
-  `web_site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '个人网站',
+  `nickname` varchar(50) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL COMMENT '用户昵称',
+  `avatar` varchar(1024) CHARACTER SET utf8 COLLATE  utf8_general_ci NOT NULL DEFAULT '' COMMENT '用户头像',
+  `intro` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '用户简介',
+  `web_site` varchar(255) CHARACTER SET utf8 COLLATE  utf8_general_ci DEFAULT NULL COMMENT '个人网站',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `is_disable` tinyint(1) DEFAULT '0' COMMENT '是否禁用',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `phone` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -648,7 +648,7 @@ CREATE TABLE `tb_user_role` (
   `user_id` int DEFAULT NULL COMMENT '用户id',
   `role_id` int DEFAULT NULL COMMENT '角色id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=232 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=232 DEFAULT CHARSET=utf8 COLLATE= utf8_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

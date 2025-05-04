@@ -62,8 +62,7 @@ import static com.Auroral.blog.utils.UserUtil.convertLoginUser;
  */
 @Service
 public class UserAuthServiceImpl extends ServiceImpl<UserAuthDao, UserAuth> implements UserAuthService {
-    @Autowired
-    private JavaMailSender javaMailSender;
+
     @Autowired
     private RedisTemplate redisTemplate;
     @Autowired

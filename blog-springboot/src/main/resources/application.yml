@@ -1,5 +1,3 @@
 spring:
   profiles:
     active: dev  # 开发时使用dev，部署时改为prod，单独修改对应的配置文件即可
-
-

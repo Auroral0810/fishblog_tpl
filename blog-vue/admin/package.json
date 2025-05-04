@@ -25,6 +25,7 @@
     "highlight.js": "^11.11.1",
     "marked": "^15.0.7",
     "mavon-editor": "^2.10.4",
+    "mermaid": "^11.6.0",
     "moment": "^2.29.4",
     "nprogress": "^0.2.0",
     "vue": "^2.6.14",
